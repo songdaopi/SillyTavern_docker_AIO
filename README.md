@@ -13,6 +13,8 @@
 
 ---
 
+[Chinese](README_cn.md)
+
 ## 📑 Table of Contents
 
 -   [📝 Description](#-description)
