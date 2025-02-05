@@ -13,7 +13,7 @@
 
 ---
 
-[Chinese](README_cn.md)
+[中文文档](README_cn.md)
 
 ## 📑 Table of Contents
 
