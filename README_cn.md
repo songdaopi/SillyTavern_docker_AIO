@@ -2,7 +2,7 @@
     <h1 align="center">SillyTavern_docker_AIO</h1>
 </p>
 <p align="center">
-    <em>🚀 SillyTavern + Clewd Docker Deployment Solution</em>
+    <em>🚀 SillyTavern + Clewd Docker 部署方案</em>
 </p>
 <p align="center">
     <img src="https://img.shields.io/github/license/Zhen-Bo/rplay-live-dl?style=flat&logo=opensourceinitiative&logoColor=white&color=00BFFF" alt="license">
@@ -13,72 +13,72 @@
 
 ---
 
-## 📑 Table of Contents
+## 📑 目录
 
--   [📝 Description](#-description)
--   [✨ Features](#-features)
--   [📘 Usage Guide](#-usage-guide)
-    -   [System Requirements](#system-requirements)
-    -   [Getting Started](#getting-started)
-        -   [Required Folder Structure](#required-folder-structure)
-    -   [Deployment Methods](#deployment-methods)
-        -   [Shell Scripts ⭐Recommended⭐](#-option-1-using-shell-scripts-recommended)
-        -   [Manual Deployment](#option-2-manual-deployment)
-    -   [Setup SillyTavern Reverse Proxy](#setup-sillytavern-reverse-proxy)
-    -   [Maintenance](#maintenance)
-        -   [Change Clewd Cookie](#change-clewd-cookie)
-        -   [Viewing Logs](#viewing-logs)
-        -   [Stop Services](#stop-services)
-    -   [Configuration](#configuration)
-        -   [Config.js Settings](#configjs)
-        -   [Config.yaml Settings](#configyaml)
--   [🔧 Troubleshooting](#troubleshooting)
--   [👥 Contributing](#-contributing)
--   [📜 License](#-license)
+-   [📝 项目描述](#-description)
+-   [✨ 特性](#-features)
+-   [📘 使用指南](#-usage-guide)
+    -   [系统要求](#system-requirements)
+    -   [开始使用](#getting-started)
+        -   [必需的文件夹结构](#required-folder-structure)
+    -   [部署方法](#deployment-methods)
+        -   [Shell脚本 ⭐推荐⭐](#-option-1-using-shell-scripts-recommended)
+        -   [手动部署](#option-2-manual-deployment)
+    -   [设置SillyTavern反向代理](#setup-sillytavern-reverse-proxy)
+    -   [维护](#maintenance)
+        -   [更改Clewd Cookie](#change-clewd-cookie)
+        -   [查看日志](#viewing-logs)
+        -   [停止服务](#stop-services)
+    -   [配置](#configuration)
+        -   [Config.js设置](#configjs)
+        -   [Config.yaml设置](#configyaml)
+-   [🔧 故障排除](#troubleshooting)
+-   [👥 贡献](#-contributing)
+-   [📜 许可证](#-license)
 
 ---
 
-## 📝 Description
+## 📝 项目描述
 
-A Docker Compose project that helps you securely deploy SillyTavern and Clewd together, ensuring Clewd runs only on internal network while keeping SillyTavern accessible.
+这是一个Docker Compose项目,帮助你安全地部署SillyTavern和Clewd,确保Clewd仅在内部网络运行,同时保持SillyTavern的可访问性。
 
-## ✨ Features
+## ✨ 特性
 
-A Docker Compose integration that enables you to:
+这个Docker Compose集成使你能够:
 
--   Deploy both SillyTavern and Clewd with a single command
--   Run Clewd service in an isolated internal network for enhanced security
--   Simplify configuration and get started quickly
+-   使用单个命令部署SillyTavern和Clewd
+-   在隔离的内部网络中运行Clewd服务以提高安全性
+-   简化配置并快速开始使用
 
-## 📘 Usage Guide
+## 📘 使用指南
 
-### System Requirements
+### 系统要求
 
--   Docker Engine
--   One of the following:
-    -   Docker Compose plugin (`docker compose`)
-    -   Docker Compose standalone (`docker-compose`)
+-   Docker引擎
+-   以下其中之一:
+    -   Docker Compose插件 (`docker compose`)
+    -   Docker Compose独立版本 (`docker-compose`)
 
-### Getting Started
+### 开始使用
 
-> **IMPORTANT**: First, create a new folder for deployment. You can name it anything you want (referred to as {folder name} below).
+> **重要**:首先,创建一个新文件夹用于部署。你可以随意命名(下文称为{文件夹名})。
 
-### Required Folder Structure
+### 必需的文件夹结构
 
-Create these subfolders inside your `{folder name}:`
+在你的`{文件夹名}`中创建这些子文件夹:
 
 -   plugins
 -   config
 -   data
 -   extension
 
-### Deployment Methods
+### 部署方法
 
-#### ⭐ Option 1: Using Shell Scripts (Recommended)
+#### ⭐ 方法1:使用Shell脚本(推荐)
 
-1. Download `config.js` to `{folder name}`
-2. Configure settings in config.js (See [Configuration Section](#configuration))
-3. Download these scripts to `{folder name}`:
+1. 下载`config.js`到`{文件夹名}`
+2. 配置config.js中的设置(参见[配置部分](#configuration))
+3. 下载这些脚本到`{文件夹名}`:
     - `1deploy.sh`
     - `2sillytavern_restart.sh`
     - `2clewd_restart.sh`
@@ -86,177 +86,178 @@ Create these subfolders inside your `{folder name}:`
     - `4sillytavern_logs.sh`
     - `4clewd_logs.sh`
     - `5stop_services.sh`
-4. Run `1deploy.sh`
-5. Edit `config.yaml` in the `config folder` (See [Configuration Section](#configuration))
-6. Run `2sillytavern_restart.sh`
+4. 运行`1deploy.sh`
+5. 编辑`config`文件夹中的`config.yaml`(参见[配置部分](#configuration))
+6. 运行`2sillytavern_restart.sh`
 
 ---
 
-#### Option 2: Manual Deployment
+#### 方法2:手动部署
 
-1. Download `config.js` to `{folder name}`
-2. Configure settings in config.js (See [Configuration Section](#configuration))
-3. Deploy using Docker:
+1. 下载`config.js`到`{文件夹名}`
+2. 配置config.js中的设置(参见[配置部分](#configuration))
+3. 使用Docker部署:
 
     ```bash
-    # Using Docker Compose standalone:
+    # 使用Docker Compose独立版:
     docker-compose up -d
-    # or
-    # Using Docker Compose plugin:
+    # 或
+    # 使用Docker Compose插件:
     docker compose up -d
     ```
 
-4. Edit `config.yaml` in the config folder (See [Configuration Section](#configuration))
-5. Restart SillyTavern to apply changes:
+4. 编辑config文件夹中的`config.yaml`(参见[配置部分](#configuration))
+5. 重启SillyTavern以应用更改:
 
     ```bash
-    # Using Docker Compose standalone:
+    # 使用Docker Compose独立版:
     docker-compose restart SillyTavern
-    # or
-    # Using Docker Compose plugin:
+    # 或
+    # 使用Docker Compose插件:
     docker compose restart SillyTavern
     ```
 
-### Setup SillyTavern Reverse Proxy
+### 设置SillyTavern反向代理
 
-1. Open AI Reverse Proxy
-    - Click `API connections` button
-    - Select `Chat Conpletion Source` to `OpenAI`
-    - Unfold Reverse Proxy
-    - Set `Proxy Server URL` to `http://clewd:8444/v1`
-    - Ensure `Show "External" models (provided by API)` checkbox is `check`
-    - Scroll down and click `Connect`
-    - Click `OpenAI Model` and scroll down to `External`
-    - Click the Model you want to use
-    - You're good to go
-2. Custom (OpenAI-compatible)
-    - Click `API connections` button
-    - Select `Chat Conpletion Source` to `Custom (OpenAI-compatible)`
-    - Set `Custom Endpoint (Base URL)` to `http://clewd:8444/v1`
-    - Scroll down and click `Connect`
-    - Click `Available Models` and Click the Model you want to use
-    - You're good to go
+1. AI反向代理
+    - 点击`API connections`按钮
+    - 选择`Chat Completion Source`为`OpenAI`
+    - 展开Reverse Proxy
+    - 设置`Proxy Server URL`为`http://clewd:8444/v1`
+    - 确保`Show "External" models (provided by API)`复选框被勾选
+    - 向下滚动并点击`Connect`
+    - 点击`OpenAI Model`并滚动到`External`
+    - 点击你想使用的模型
+    - 设置完成
 
-### Maintenance
+2. 自定义(OpenAI兼容)
+    - 点击`API connections`按钮
+    - 选择`Chat Completion Source`为`Custom (OpenAI-compatible)`
+    - 设置`Custom Endpoint (Base URL)`为`http://clewd:8444/v1`
+    - 向下滚动并点击`Connect`
+    - 点击`Available Models`并点击你想使用的模型
+    - 设置完成
 
-##### Change Clewd cookie
+### 维护
 
-1. Open `{folder name}`/config.js
-2. Update Cookie/CookieArray values
-3. Restart Clewd:
-    - Using script: Run `2clewd_restart.sh`
-    - Manually:
+##### 更改Clewd cookie
+
+1. 打开`{文件夹名}`/config.js
+2. 更新Cookie/CookieArray值
+3. 重启Clewd:
+    - 使用脚本:运行`2clewd_restart.sh`
+    - 手动:
         ```bash
         docker-compose restart Clewd
-        # or
+        # 或
         docker compose restart Clewd
         ```
 
-#### Viewing Logs
+#### 查看日志
 
-Using Shell script or manual to view logs
+使用Shell脚本或手动查看日志
 
-For SillyTavern logs:
+查看SillyTavern日志:
 
 ```bash
-# Using script
+# 使用脚本
 .\4sillytavern_logs.sh
 
-# Manually
+# 手动
 docker-compose logs -f SillyTavern
-# or
+# 或
 docker compose logs -f SillyTavern
 ```
 
-For Clewd logs:
+查看Clewd日志:
 
 ```bash
-# Using script
+# 使用脚本
 .\4clewd_logs.sh
 
-# Manually
+# 手动
 docker-compose logs -f clewd
-# or
+# 或
 docker compose logs -f clewd
 ```
 
-#### Stop services
+#### 停止服务
 
-Using Shell script or manual to view logs
+使用Shell脚本或手动停止服务
 
 ```bash
-# Using script
+# 使用脚本
 .\5stop_services.sh
 
-# Manually
+# 手动
 docker-compose down
-# or
+# 或
 docker compose down
 ```
 
-### Configuration
+### 配置
 
 #### config.js
 
-1. Edit `Cookie` or `CookieArray`
-2. Change `IP` from `127.0.0.1` to `0.0.0.0`
-3. Edit other you want to change (You can refer to the following URL to modify the [teralomaniac_clewd](https://rentry.org/teralomaniac_clewd).)
+1. 编辑`Cookie`或`CookieArray`
+2. 将`IP`从`127.0.0.1`改为`0.0.0.0`
+3. 编辑其他你想更改的设置(你可以参考以下URL进行修改[teralomaniac_clewd](https://rentry.org/teralomaniac_clewd))
 
 #### config.yaml
 
-1. Edit `port` to which port you want to use
-2. Edit `whitelistMode` to `false`
-3. Edit `basicAuthMode` to `true`
-4. Edit `username` and `password` under `basicAuthUser`
-5. Edit other you want to change
+1. 编辑`port`为你想使用的端口
+2. 编辑`whitelistMode`为`false`
+3. 编辑`basicAuthMode`为`true`
+4. 编辑`basicAuthUser`下的`username`和`password`
+5. 编辑其他你想更改的设置
 
 ---
 
-## 🔧 Troubleshooting
+## 🔧 故障排除
 
-WIP
+开发中
 
 ---
 
-## 👥 Contributing
+## 👥 贡献
 
--   **💬 [Join the Discussions](https://github.com/Zhen-Bo/SillyTavern_docker_AIO/discussions)**: Share your insights, provide feedback, or ask questions.
--   **🐛 [Report Issues](https://github.com/Zhen-Bo/SillyTavern_docker_AIO/issues)**: Submit bugs found or log feature requests for the `rplay-live-dl` project.
--   **💡 [Submit Pull Requests](https://github.com/Zhen-Bo/SillyTavern_docker_AIO/pulls)**: Review open PRs, and submit your own PRs.
+-   **💬 [参与讨论](https://github.com/Zhen-Bo/SillyTavern_docker_AIO/discussions)**: 分享你的见解,提供反馈或提出问题。
+-   **🐛 [报告问题](https://github.com/Zhen-Bo/SillyTavern_docker_AIO/issues)**: 提交发现的bug或功能请求。
+-   **💡 [提交Pull Requests](https://github.com/Zhen-Bo/SillyTavern_docker_AIO/pulls)**: 审查开放的PR,提交你自己的PR。
 
 <details closed>
-<summary>Contributing Guidelines</summary>
+<summary>贡献指南</summary>
 
-1. **Fork the Repository**: Start by forking the project repository to your github account.
-2. **Clone Locally**: Clone the forked repository to your local machine using a git client.
+1. **Fork仓库**: 首先fork项目仓库到你的GitHub账户。
+2. **本地克隆**: 使用git客户端将fork的仓库克隆到本地机器。
     ```sh
     git clone https://github.com/${{ github.actor }}/SillyTavern_docker_AIO
     ```
-3. **Create a New Branch**: Always work on a new branch, giving it a descriptive name.
+3. **创建新分支**: 总是在新分支上工作,给它一个描述性的名称。
     ```sh
     git checkout -b new-feature-x
     ```
-4. **Make Your Changes**: Develop and test your changes locally.
-5. **Commit Your Changes**: Commit with a clear message describing your updates.
+4. **做出更改**: 在本地开发和测试你的更改。
+5. **提交更改**: 使用清晰的消息描述你的更新进行提交。
     ```sh
-    git commit -m 'Implemented new feature x.'
+    git commit -m '实现了新特性x'
     ```
-6. **Push to github**: Push the changes to your forked repository.
+6. **推送到GitHub**: 将更改推送到你fork的仓库。
     ```sh
     git push origin new-feature-x
     ```
-7. **Submit a Pull Request**: Create a PR against the original project repository. Clearly describe the changes and their motivations.
-8. **Review**: Once your PR is reviewed and approved, it will be merged into the main branch. Congratulations on your contribution!
+7. **提交Pull Request**: 对原项目仓库创建PR。清晰描述更改和其动机。
+8. **审查**: 一旦你的PR被审查并批准,它将被合并到主分支。恭喜你的贡献!
 
-Notice! Please ensure your PR:
+注意!请确保你的PR:
 
-1. Follows the existing code style.
-2. Use [conventional commit messages format](https://www.conventionalcommits.org/en/v1.0.0/)
-3. Updates documentation.
-4. Describes the changes made.
+1. 遵循现有的代码风格。
+2. 使用[约定式提交消息格式](https://www.conventionalcommits.org/en/v1.0.0/)
+3. 更新文档。
+4. 描述所做的更改。
  </details>
 
-### Contributor Graph
+### 贡献者图表
 
 <br>
 <p align="left">
@@ -267,6 +268,6 @@ Notice! Please ensure your PR:
 
 ---
 
-## 📜 License
+## 📜 许可证
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+本项目采用MIT许可证。详情请见[LICENSE](LICENSE)文件。
