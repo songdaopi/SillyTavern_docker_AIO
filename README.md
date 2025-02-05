@@ -32,9 +32,10 @@
     -   [Configuration](#configuration)
         -   [Config.js Settings](#configjs)
         -   [Config.yaml Settings](#configyaml)
--   [🔧 Troubleshooting](#troubleshooting)
+-   [🔧 Troubleshooting](#-troubleshooting)
 -   [👥 Contributing](#-contributing)
 -   [📜 License](#-license)
+-   [🌟 Acknowledgement](#-acknowledgement)
 
 ---
 
@@ -258,15 +259,16 @@ Notice! Please ensure your PR:
 
 ### Contributor Graph
 
-<br>
-<p align="left">
-   <a href="https://github.com{/Zhen-Bo/rplay-live-dl/}graphs/contributors">
-      <img src="https://contrib.rocks/image?repo=Zhen-Bo/rplay-live-dl">
-   </a>
-</p>
+[![Contributors](https://contrib.rocks/image?repo=Zhen-Bo/SillyTavern_docker_AIO)](https://contrib.rocks/image?repo=Zhen-Bo/SillyTavern_docker_AIO)
 
 ---
 
 ## 📜 License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+---
+
+## 🌟 Acknowledgement
+
+-   teralomaniac: [clewd 修改版 by tera](https://github.com/teralomaniac/clewd)

@@ -259,12 +259,7 @@ docker compose down
 
 ### 贡献者图表
 
-<br>
-<p align="left">
-   <a href="https://github.com{/Zhen-Bo/rplay-live-dl/}graphs/contributors">
-      <img src="https://contrib.rocks/image?repo=Zhen-Bo/rplay-live-dl">
-   </a>
-</p>
+[![Contributors](https://contrib.rocks/image?repo=Zhen-Bo/SillyTavern_docker_AIO)](https://contrib.rocks/image?repo=Zhen-Bo/SillyTavern_docker_AIO)
 
 ---
 
