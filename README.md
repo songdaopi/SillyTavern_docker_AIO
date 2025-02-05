@@ -35,6 +35,7 @@
 -   [🔧 Troubleshooting](#-troubleshooting)
 -   [👥 Contributing](#-contributing)
 -   [📜 License](#-license)
+-   [🌟 Acknowledgement](#-acknowledgement)
 
 ---
 
@@ -265,3 +266,9 @@ Notice! Please ensure your PR:
 ## 📜 License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+---
+
+## 🌟 Acknowledgement
+
+-   teralomaniac: [clewd 修改版 by tera](https://github.com/teralomaniac/clewd)
