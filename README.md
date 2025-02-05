@@ -32,7 +32,7 @@
     -   [Configuration](#configuration)
         -   [Config.js Settings](#configjs)
         -   [Config.yaml Settings](#configyaml)
--   [🔧 Troubleshooting](#troubleshooting)
+-   [🔧 Troubleshooting](#-troubleshooting)
 -   [👥 Contributing](#-contributing)
 -   [📜 License](#-license)
 
@@ -258,12 +258,7 @@ Notice! Please ensure your PR:
 
 ### Contributor Graph
 
-<br>
-<p align="left">
-   <a href="https://github.com{/Zhen-Bo/rplay-live-dl/}graphs/contributors">
-      <img src="https://contrib.rocks/image?repo=Zhen-Bo/rplay-live-dl">
-   </a>
-</p>
+[![Contributors](https://contrib.rocks/image?repo=Zhen-Bo/SillyTavern_docker_AIO)](https://contrib.rocks/image?repo=Zhen-Bo/SillyTavern_docker_AIO)
 
 ---
 
