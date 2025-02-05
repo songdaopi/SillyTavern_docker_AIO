@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  SillyTavern:
+    container_name: SillyTavern
+    image: ghcr.io/sillytavern/sillytavern:latest
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./plugins:/home/node/app/plugins:rw
+      - ./config:/home/node/app/config:rw
+      - ./data:/home/node/app/data:rw
+      - ./extensions:/home/node/app/public/scripts/extensions/third-party:rw
+
+  clewd:
+    container_name: clewd
+    image: ghcr.io/zhen-bo/clewd:latest
+    expose:
+      - 8444
+    volumes:
+      - ./config.js:/app/config.js
