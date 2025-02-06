@@ -13,6 +13,8 @@
 
 ---
 
+[中文文档](README_cn.md)
+
 ## 📑 Table of Contents
 
 -   [📝 Description](#-description)

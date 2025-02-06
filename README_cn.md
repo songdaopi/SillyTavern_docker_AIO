@@ -35,6 +35,7 @@
 - [🔧 故障排除](#-故障排除)
 - [👥 贡献](#-贡献)
 - [📜 许可证](#-许可证)
+- [🌟致谢](#-致谢)
 
 ---
 
@@ -266,3 +267,8 @@ docker compose down
 ## 📜 许可证
 
 本项目采用MIT许可证。详情请见[LICENSE](LICENSE)文件。
+---
+
+## 🌟 致谢
+
+-   teralomaniac: [clewd 修改版 by tera](https://github.com/teralomaniac/clewd)
