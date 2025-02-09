@@ -2,7 +2,7 @@
     <h1 align="center">SillyTavern_docker_AIO</h1>
 </p>
 <p align="center">
-    <em>🚀 SillyTavern + Clewd Docker Deployment Solution</em>
+    <em>🚀 SillyTavern + Clewd + YOUChat_proxy Docker Deployment Solution</em>
 </p>
 <p align="center">
     <img src="https://img.shields.io/github/license/Zhen-Bo/rplay-live-dl?style=flat&logo=opensourceinitiative&logoColor=white&color=00BFFF" alt="license">
