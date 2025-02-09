@@ -109,7 +109,7 @@ Before proceeding with deployment, set up the following folder structure:
     - `config.youchat.mjs`
 
     > **Note**  
-    > 💡 See [Configuration Section](#configuration) for setting details
+    > 🔰 See [Configuration Section](#configuration) for setting details
 
 3. Choose and download ONE script to `{folder name}` based on your language:
 
@@ -130,7 +130,7 @@ Before proceeding with deployment, set up the following folder structure:
     2. Modify config.yaml settings as needed
 
     > **Note**  
-    > 💡 See [Configuration Section](#configuration) for setting details
+    > 🔰 See [Configuration Section](#configuration) for setting details
 
 6. After configuration:
     1. Run the AIO script again
@@ -151,7 +151,7 @@ Before proceeding with deployment, set up the following folder structure:
     - `config.youchat.mjs`
 
     > **Note**  
-    > 💡 See [Configuration Section](#configuration) for setting details
+    > 🔰 See [Configuration Section](#configuration) for setting details
 
 3. Deploy using Docker:
 
@@ -169,7 +169,7 @@ Before proceeding with deployment, set up the following folder structure:
     2. Modify config.yaml settings as needed
 
     > **Note**  
-    > 💡 See [Configuration Section](#configuration) for setting details
+    > 🔰 See [Configuration Section](#configuration) for setting details
 
 5. Restart SillyTavern to apply changes:
 
