@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 版本資訊
-VERSION="1.1"
+VERSION="1.2"
 
 # 獲取 GitHub 最新版本
 get_github_latest_version() {
