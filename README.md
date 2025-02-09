@@ -140,8 +140,19 @@ Before proceeding with deployment, set up the following folder structure:
 
 #### Option 2: Manual Deployment
 
-1. Download `config.clewd.js` and `config.youchat.mjs` to`{folder name}`
-2. Configure settings in `config.clewd.js` and `config.youchat.mjs` (See [Configuration Section](#configuration))
+1. Download these files to `{folder name}` :
+
+    - [config.clewd.js](config.clewd.js)
+    - [config.youchat.mjs](config.youchat.mjs)
+
+2. Modify settings in:
+
+    - `config.clewd.js`
+    - `config.youchat.mjs`
+
+    > **Note**  
+    > 💡 See [Configuration Section](#configuration) for setting details
+
 3. Deploy using Docker:
 
     ```bash
@@ -152,7 +163,14 @@ Before proceeding with deployment, set up the following folder structure:
     docker compose up -d
     ```
 
-4. Edit `config.yaml` in the config folder (See [Configuration Section](#configuration))
+4. Check and configure:
+
+    1. Verify config.yaml is generated in config folder
+    2. Modify config.yaml settings as needed
+
+    > **Note**  
+    > 💡 See [Configuration Section](#configuration) for setting details
+
 5. Restart SillyTavern to apply changes:
 
     ```bash
@@ -266,7 +284,7 @@ docker-compose logs -f
     - `3` to stop YouChat proxy
         > **Tip**  
         > You can stop multiple services by combining numbers with commas
-        > Example: `1,2` to stop both SillyTavern and Clewd
+        > Example: `1,2` to view both SillyTavern and Clewd
 
 ##### Method 2: Manual Commands
 
