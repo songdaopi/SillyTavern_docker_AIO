@@ -25,7 +25,7 @@ English | [简体中文](readme-zh_cn.md)
 -   [📘 Usage Guide](#-usage-guide)
     -   [System Requirements](#system-requirements)
     -   [Getting Started](#getting-started)
-        -   [Required Folder Structure](#required-folder-structure)
+        -   [Required Folder Structure](#required-directory-structure)
     -   [Deployment Methods](#deployment-methods)
         -   [Shell Scripts ⭐Recommended⭐](#-option-1-using-shell-scripts-recommended)
         -   [Manual Deployment](#option-2-manual-deployment)
@@ -254,7 +254,7 @@ docker compose logs -f
 docker-compose logs -f
 ```
 
-#### Stopping Services
+#### Stop Services
 
 ##### Method 1: Via AIO Script (Recommended)
 
