@@ -2,7 +2,7 @@
     <h1 align="center">SillyTavern_docker_AIO</h1>
 </p>
 <p align="center">
-    <em>🚀 SillyTavern + Clewd Docker Deployment Solution</em>
+    <em>🚀 SillyTavern + Clewd + YOUChat_proxy Docker Deployment Solution</em>
 </p>
 <p align="center">
     <img src="https://img.shields.io/github/license/Zhen-Bo/rplay-live-dl?style=flat&logo=opensourceinitiative&logoColor=white&color=00BFFF" alt="license">
@@ -12,7 +12,7 @@
 </p>
 <div align="center">
 
-English | [简体中文](readme-zh_cn.md)
+English | [简体中文](README-zh_cn.md)
 
 </div>
 
@@ -25,20 +25,23 @@ English | [简体中文](readme-zh_cn.md)
 -   [📘 Usage Guide](#-usage-guide)
     -   [System Requirements](#system-requirements)
     -   [Getting Started](#getting-started)
-        -   [Required Folder Structure](#required-folder-structure)
+        -   [Required Folder Structure](#required-directory-structure)
     -   [Deployment Methods](#deployment-methods)
         -   [Shell Scripts ⭐Recommended⭐](#-option-1-using-shell-scripts-recommended)
         -   [Manual Deployment](#option-2-manual-deployment)
     -   [Setup SillyTavern Reverse Proxy](#setup-sillytavern-reverse-proxy)
     -   [Maintenance](#maintenance)
-        -   [Change Clewd Cookie](#change-clewd-cookie)
-        -   [Change You Cookie](#change-you-cookie)
+        -   [Managing Cookies](#managing-cookies)
+            -   [Updating Clewd Cookie](#updating-clewd-cookie)
+            -   [Updating YouChat Cookie](#updating-youchat-cookie)
         -   [Viewing Logs](#viewing-logs)
         -   [Stop Services](#stop-services)
     -   [Configuration](#configuration)
         -   [Clewd Settings](#clewd-settings)
         -   [YOUChat_proxy Settings](#youchat_proxy-settings)
-        -   [Config.yaml Settings](#configyaml)
+            -   [config.youchat.mjs](#1-configyouchatmjs)
+            -   [Docker Compose Environment Variables](#2-docker-compose-environment-variables)
+        -   [Config.yaml](#configyaml)
 -   [🔧 Troubleshooting](#-troubleshooting)
 -   [👥 Contributing](#-contributing)
 -   [📜 License](#-license)
@@ -69,43 +72,87 @@ A Docker Compose integration that enables you to:
 
 ### Getting Started
 
-> **IMPORTANT**: First, create a new folder for deployment. You can name it anything you want (referred to as {folder name} below).
+> [!IMPORTANT]  
+> Create a new deployment root folder first.  
+> You can choose any name for this folder (referenced as `{folder name}` below).
 
-### Required Folder Structure
+### Required Directory Structure
 
-Create these subfolders inside your `{folder name}:`
+> [!NOTE]
+>
+> -   All directories must be created before deployment
+> -   Directory names are case-sensitive
+> -   Each directory serves a specific purpose
 
--   plugins
--   config
--   data
--   extension
+Before proceeding with deployment, set up the following folder structure:
+
+```
+{folder name}/            # Root deployment directory
+├── plugins/              # SillyTavern plugins directory
+├── config/               # Configuration files directory
+├── data/                 # User data and settings directory
+└── extension/            # SillyTavern extensions directory
+```
 
 ### Deployment Methods
 
 #### ⭐ Option 1: Using Shell Scripts (Recommended)
 
-1. Download `config.clewd.js` and `config.youchat.mjs` to`{folder name}`
-2. Configure settings in `config.clewd.js` and `config.youchat.mjs` (See [Configuration Section](#configuration))
-3. Download these scripts to `{folder name}`:
-    - [1deploy.sh](1deploy.sh)
-    - [2sillytavern_restart.sh](2sillytavern_restart.sh)
-    - [2clewd_restart.sh](2clewd_restart.sh)
-    - [2youchat_restart.sh](2youchat_restart.sh)
-    - [3update_images.sh](3update_images.sh)
-    - [4sillytavern_logs.sh]([4sillytavern_logs.sh)
-    - [4clewd_logs.sh](4clewd_logs.sh)
-    - [4youchat_logs.sh](4youchat_logs.sh)
-    - [5stop_services.sh](5stop_services.sh)
-4. Run `1deploy.sh`
-5. Edit `config.yaml` in the `config folder` (See [Configuration Section](#configuration))
-6. Run `2sillytavern_restart.sh`
+1. Download these files to `{folder name}` :
+
+    - [config.clewd.js](config.clewd.js)
+    - [config.youchat.mjs](config.youchat.mjs)
+
+2. Modify settings in:
+
+    - `config.clewd.js`
+    - `config.youchat.mjs`
+
+    > **Note**  
+    > 🔰 See [Configuration Section](#configuration) for setting details
+
+3. Choose and download ONE script to `{folder name}` based on your language:
+
+    - [AIO_script-en_US.sh](AIO_script-en_US.sh) # English version
+    - [AIO_script-zh_TW.sh](AIO_script-zh_TW.sh) # Traditional Chinese version
+
+    > **Note**  
+    > ⚠️ Download only one script that matches your language preference
+
+4. Run the AIO script and choose to:
+
+    - Deploy all services
+    - Or deploy SillyTavern only
+
+5. Check and configure:
+
+    1. Verify config.yaml is generated in config folder
+    2. Modify config.yaml settings as needed
+
+    > **Note**  
+    > 🔰 See [Configuration Section](#configuration) for setting details
+
+6. After configuration:
+    1. Run the AIO script again
+    2. Select to restart SillyTavern
 
 ---
 
 #### Option 2: Manual Deployment
 
-1. Download `config.clewd.js` and `config.youchat.mjs` to`{folder name}`
-2. Configure settings in `config.clewd.js` and `config.youchat.mjs` (See [Configuration Section](#configuration))
+1. Download these files to `{folder name}` :
+
+    - [config.clewd.js](config.clewd.js)
+    - [config.youchat.mjs](config.youchat.mjs)
+
+2. Modify settings in:
+
+    - `config.clewd.js`
+    - `config.youchat.mjs`
+
+    > **Note**  
+    > 🔰 See [Configuration Section](#configuration) for setting details
+
 3. Deploy using Docker:
 
     ```bash
@@ -116,7 +163,14 @@ Create these subfolders inside your `{folder name}:`
     docker compose up -d
     ```
 
-4. Edit `config.yaml` in the config folder (See [Configuration Section](#configuration))
+4. Check and configure:
+
+    1. Verify config.yaml is generated in config folder
+    2. Modify config.yaml settings as needed
+
+    > **Note**  
+    > 🔰 See [Configuration Section](#configuration) for setting details
+
 5. Restart SillyTavern to apply changes:
 
     ```bash
@@ -151,84 +205,102 @@ Create these subfolders inside your `{folder name}:`
 
 ### Maintenance
 
-##### Change Clewd cookie
+#### Managing Cookies
 
-1. Open `{folder name}`/config.clewd.js
-2. Update Cookie/CookieArray values
-3. Restart Clewd:
-    - Using script: Run `2clewd_restart.sh`
-    - Manually:
+##### Updating Clewd Cookie
+
+1. Open `{folder name}/config.clewd.js`
+2. Update `Cookie` or `CookieArray` values
+3. Restart Clewd service:
+    - Via AIO script:
+        1. Run `AIO_script`
+        2. Select `2` to enter Service Management menu
+        3. Select `2` to restart Clewd
+    - Manually using commands:
         ```bash
-        docker-compose restart Clewd
-        # or
-        docker compose restart Clewd
+        # Using Docker Compose plugin
+        docker compose restart clewd
+        # or using legacy command
+        docker-compose restart clewd
         ```
 
-##### Change You cookie
+##### Updating YouChat Cookie
 
-1. Open `{folder name}`/config.youchat.mjs
-2. Update Cookie values
-3. Restart youchat_proxy:
-    - Using script: Run `2youchat_restart.sh`
-    - Manually:
+1. Open `{folder name}/config.youchat.mjs`
+2. Update `Cookie` value
+3. Restart YouChat proxy service:
+    - Via AIO script:
+        1. Run `AIO_script`
+        2. Select `2` to enter Service Management menu
+        3. Select `3` to restart YouChat proxy
+    - Manually using commands:
         ```bash
-        docker-compose restart youchat_proxy
-        # or
+        # Using Docker Compose plugin
         docker compose restart youchat_proxy
+        # or using legacy command
+        docker-compose restart youchat_proxy
         ```
 
 #### Viewing Logs
 
-Using Shell script or manual to view logs
+##### Method 1: Using AIO Script (Recommended)
 
-For SillyTavern logs:
+1. Run `AIO_script`
+2. Select `3` to enter Log Viewing menu
+3. Choose which service(s) logs you want to view:
+    - `1` for SillyTavern logs
+    - `2` for Clewd logs
+    - `3` for YouChat proxy logs
+        > **Tip**  
+        > You can stop multiple services by combining numbers with commas
+        > Example: `1,2` to stop both SillyTavern and Clewd
+
+##### Method 2: Manual Commands
+
+> [!TIP]  
+> Replace [service_name] with: SillyTavern, clewd, or youchat_proxy
 
 ```bash
-# Using script
-.\4sillytavern_logs.sh
+# View single service logs
+docker compose logs -f [service] ([service2]...)
+# or using legacy command
+docker-compose logs -f [service] ([service2]...)
 
-# Manually
-docker-compose logs -f SillyTavern
-# or
-docker compose logs -f SillyTavern
+# View all services logs
+docker compose logs -f
+# or using legacy command
+docker-compose logs -f
 ```
 
-For Clewd logs:
+#### Stop Services
+
+##### Method 1: Via AIO Script (Recommended)
+
+1. Run `AIO_script`
+2. Select `4` to enter Service Management menu
+3. Choose which services to stop:
+    - `1` to stop SillyTavern
+    - `2` to stop Clewd
+    - `3` to stop YouChat proxy
+        > **Tip**  
+        > You can stop multiple services by combining numbers with commas
+        > Example: `1,2` to view both SillyTavern and Clewd
+
+##### Method 2: Manual Commands
+
+> [!TIP]  
+> Replace [service_name] with: SillyTavern, clewd, or youchat_proxy
 
 ```bash
-# Using script
-.\4clewd_logs.sh
+# Stop single service
+docker compose stop [service_name]
+# or using legacy command
+docker-compose stop [service_name]
 
-# Manually
-docker-compose logs -f clewd
-# or
-docker compose logs -f clewd
-```
-
-For YOUChat_proxy logs:
-
-```bash
-# Using script
-.\4youchat_logs.sh
-
-# Manually
-docker-compose logs -f youchat_proxy
-# or
-docker compose logs -f youchat_proxy
-```
-
-#### Stop services
-
-Using Shell script or manual to view logs
-
-```bash
-# Using script
-.\5stop_services.sh
-
-# Manually
-docker-compose down
-# or
+# Stop all services
 docker compose down
+# or using legacy command
+docker-compose down
 ```
 
 ### Configuration
@@ -249,7 +321,7 @@ docker compose down
 
 ##### 2. Docker Compose Environment Variables
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > USE_MANUAL_LOGIN Need to be set to false
 
 -   All settings except USE_MANUAL_LOGIN can be modified as needed
