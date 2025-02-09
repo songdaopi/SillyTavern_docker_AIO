@@ -12,7 +12,7 @@
 </p>
 <div align="center">
 
-English | [简体中文](readme-zh_cn.md)
+English | [简体中文](README-zh_cn.md)
 
 </div>
 
