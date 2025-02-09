@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Version information
-VERSION="1.1"
+VERSION="1.2"
 
 # Get GitHub latest version
 get_github_latest_version() {
