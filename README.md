@@ -73,10 +73,16 @@ A Docker Compose integration that enables you to:
 ### Getting Started
 
 > [!IMPORTANT]  
-> Create a new deployment root folder first.
+> Create a new deployment root folder first.  
 > You can choose any name for this folder (referenced as `{folder name}` below).
 
 ### Required Directory Structure
+
+> [!NOTE]
+>
+> -   All directories must be created before deployment
+> -   Directory names are case-sensitive
+> -   Each directory serves a specific purpose
 
 Before proceeding with deployment, set up the following folder structure:
 
@@ -87,12 +93,6 @@ Before proceeding with deployment, set up the following folder structure:
 ├── data/                 # User data and settings directory
 └── extension/            # SillyTavern extensions directory
 ```
-
-> [!NOTE]
->
-> -   All directories must be created before deployment
-> -   Directory names are case-sensitive
-> -   Each directory serves a specific purpose
 
 ### Deployment Methods
 
@@ -108,7 +108,7 @@ Before proceeding with deployment, set up the following folder structure:
     - `config.clewd.js`
     - `config.youchat.mjs`
 
-    > [!NOTE]  
+    > **Note**  
     > 💡 See [Configuration Section](#configuration) for setting details
 
 3. Choose and download ONE script to `{folder name}` based on your language:
@@ -116,7 +116,7 @@ Before proceeding with deployment, set up the following folder structure:
     - [AIO_script-en_US.sh](AIO_script-en_US.sh) # English version
     - [AIO_script-zh_TW.sh](AIO_script-zh_TW.sh) # Traditional Chinese version
 
-    > [!NOTE]  
+    > **Note**  
     > ⚠️ Download only one script that matches your language preference
 
 4. Run the AIO script and choose to:
@@ -129,7 +129,7 @@ Before proceeding with deployment, set up the following folder structure:
     1. Verify config.yaml is generated in config folder
     2. Modify config.yaml settings as needed
 
-    > [!NOTE]  
+    > **Note**  
     > 💡 See [Configuration Section](#configuration) for setting details
 
 6. After configuration:
@@ -233,11 +233,14 @@ Before proceeding with deployment, set up the following folder structure:
     - `1` for SillyTavern logs
     - `2` for Clewd logs
     - `3` for YouChat proxy logs
-        > [!TIP]  
+        > **Tip**  
         > You can stop multiple services by combining numbers with commas
         > Example: `1,2` to stop both SillyTavern and Clewd
 
 ##### Method 2: Manual Commands
+
+> [!TIP]  
+> Replace [service_name] with: SillyTavern, clewd, or youchat_proxy
 
 ```bash
 # View single service logs
@@ -251,9 +254,6 @@ docker compose logs -f
 docker-compose logs -f
 ```
 
-> [!TIP]  
-> Replace [service_name] with: SillyTavern, clewd, or youchat_proxy
-
 #### Stopping Services
 
 ##### Method 1: Via AIO Script (Recommended)
@@ -264,11 +264,14 @@ docker-compose logs -f
     - `1` to stop SillyTavern
     - `2` to stop Clewd
     - `3` to stop YouChat proxy
-        > [!TIP]  
+        > **Tip**  
         > You can stop multiple services by combining numbers with commas
         > Example: `1,2` to stop both SillyTavern and Clewd
 
 ##### Method 2: Manual Commands
+
+> [!TIP]  
+> Replace [service_name] with: SillyTavern, clewd, or youchat_proxy
 
 ```bash
 # Stop single service
@@ -281,9 +284,6 @@ docker compose down
 # or using legacy command
 docker-compose down
 ```
-
-> [!TIP]  
-> Replace [service_name] with: SillyTavern, clewd, or youchat_proxy
 
 ### Configuration
 
