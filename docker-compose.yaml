@@ -18,4 +18,41 @@ services:
     expose:
       - 8444
     volumes:
-      - ./config.js:/app/config.js
+      - ./config.clewd.js:/app/config.js
+
+  youchat_proxy:
+    container_name: youchat_proxy
+    image: ghcr.io/zhen-bo/youchat_proxy:latest
+    expose:
+      - 8080
+    volumes:
+      - ./config.youchat.mjs:/app/config.mjs
+    environment:
+      - ACTIVE_PROVIDER=you
+      - USE_MANUAL_LOGIN=false
+      - HEADLESS_BROWSER=true
+      - BROWSER_INSTANCE_COUNT=1
+      - SESSION_LOCK_TIMEOUT=180
+      - ENABLE_DETECTION=true
+      - SKIP_ACCOUNT_VALIDATION=false
+      - ENABLE_REQUEST_LIMIT=false
+      - ALLOW_NON_PRO=false
+      - CUSTOM_END_MARKER=<CHAR_turn>
+      - ENABLE_DELAY_LOGIC=false
+      - ENABLE_TUNNEL=false
+      - TUNNEL_TYPE=ngrok
+      - SUBDOMAIN=
+      - NGROK_AUTH_TOKEN=
+      - NGROK_CUSTOM_DOMAIN=
+      - PASSWORD=
+      - PORT=8080
+      - AI_MODEL=
+      - USE_CUSTOM_MODE=false
+      - ENABLE_MODE_ROTATION=false
+      - INCOGNITO_MODE=false
+      - UPLOAD_FILE_FORMAT=txt
+      - ENABLE_GARBLED_START=false
+      - GARBLED_START_MIN_LENGTH=1000
+      - GARBLED_START_MAX_LENGTH=5000
+      - GARBLED_END_LENGTH=500
+      - ENABLE_GARBLED_END=false
