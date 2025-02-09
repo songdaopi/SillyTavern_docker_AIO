@@ -10,10 +10,13 @@
     <img src="https://img.shields.io/github/languages/top/Zhen-Bo/SillyTavern_docker_AIO?style=flat&color=00BFFF" alt="repo-top-language">
     <img src="https://img.shields.io/github/languages/count/Zhen-Bo/SillyTavern_docker_AIO?style=flat&color=00BFFF" alt="repo-language-count">
 </p>
+<div align="center">
+
+English | [简体中文](readme-zh_cn.md)
+
+</div>
 
 ---
-
-[中文文档](README_cn.md)
 
 ## 📑 Table of Contents
 
@@ -29,10 +32,12 @@
     -   [Setup SillyTavern Reverse Proxy](#setup-sillytavern-reverse-proxy)
     -   [Maintenance](#maintenance)
         -   [Change Clewd Cookie](#change-clewd-cookie)
+        -   [Change You Cookie](#change-you-cookie)
         -   [Viewing Logs](#viewing-logs)
         -   [Stop Services](#stop-services)
     -   [Configuration](#configuration)
-        -   [Config.js Settings](#configjs)
+        -   [Clewd Settings](#clewd-settings)
+        -   [YOUChat_proxy Settings](#youchat_proxy-settings)
         -   [Config.yaml Settings](#configyaml)
 -   [🔧 Troubleshooting](#-troubleshooting)
 -   [👥 Contributing](#-contributing)
@@ -43,14 +48,14 @@
 
 ## 📝 Description
 
-A Docker Compose project that helps you securely deploy SillyTavern and Clewd together, ensuring Clewd runs only on internal network while keeping SillyTavern accessible.
+A Docker Compose project that helps you securely deploy `SillyTavern` and `Clewd` and `YOUChat_proxy` together, ensuring Clewd and YOUChat_proxy runs only on internal network while keeping SillyTavern accessible.
 
 ## ✨ Features
 
 A Docker Compose integration that enables you to:
 
 -   Deploy both SillyTavern and Clewd with a single command
--   Run Clewd service in an isolated internal network for enhanced security
+-   Run Clewd and YOUChat_proxy service in an isolated internal network for enhanced security
 -   Simplify configuration and get started quickly
 
 ## 📘 Usage Guide
@@ -79,16 +84,18 @@ Create these subfolders inside your `{folder name}:`
 
 #### ⭐ Option 1: Using Shell Scripts (Recommended)
 
-1. Download `config.js` to `{folder name}`
-2. Configure settings in config.js (See [Configuration Section](#configuration))
+1. Download `config.clewd.js` and `config.youchat.mjs` to`{folder name}`
+2. Configure settings in `config.clewd.js` and `config.youchat.mjs` (See [Configuration Section](#configuration))
 3. Download these scripts to `{folder name}`:
-    - `1deploy.sh`
-    - `2sillytavern_restart.sh`
-    - `2clewd_restart.sh`
-    - `3update_images.sh`
-    - `4sillytavern_logs.sh`
-    - `4clewd_logs.sh`
-    - `5stop_services.sh`
+    - [1deploy.sh](1deploy.sh)
+    - [2sillytavern_restart.sh](2sillytavern_restart.sh)
+    - [2clewd_restart.sh](2clewd_restart.sh)
+    - [2youchat_restart.sh](2youchat_restart.sh)
+    - [3update_images.sh](3update_images.sh)
+    - [4sillytavern_logs.sh]([4sillytavern_logs.sh)
+    - [4clewd_logs.sh](4clewd_logs.sh)
+    - [4youchat_logs.sh](4youchat_logs.sh)
+    - [5stop_services.sh](5stop_services.sh)
 4. Run `1deploy.sh`
 5. Edit `config.yaml` in the `config folder` (See [Configuration Section](#configuration))
 6. Run `2sillytavern_restart.sh`
@@ -97,8 +104,8 @@ Create these subfolders inside your `{folder name}:`
 
 #### Option 2: Manual Deployment
 
-1. Download `config.js` to `{folder name}`
-2. Configure settings in config.js (See [Configuration Section](#configuration))
+1. Download `config.clewd.js` and `config.youchat.mjs` to`{folder name}`
+2. Configure settings in `config.clewd.js` and `config.youchat.mjs` (See [Configuration Section](#configuration))
 3. Deploy using Docker:
 
     ```bash
@@ -126,7 +133,8 @@ Create these subfolders inside your `{folder name}:`
     - Click `API connections` button
     - Select `Chat Conpletion Source` to `OpenAI`
     - Unfold Reverse Proxy
-    - Set `Proxy Server URL` to `http://clewd:8444/v1`
+    - Set `Proxy Server URL` to `http://clewd:8444/v1` for `clewd`
+    - Set `Proxy Server URL` to `http://youchat_proxy:8080/v1` for `YOUChat_proxy`
     - Ensure `Show "External" models (provided by API)` checkbox is `check`
     - Scroll down and click `Connect`
     - Click `OpenAI Model` and scroll down to `External`
@@ -135,7 +143,8 @@ Create these subfolders inside your `{folder name}:`
 2. Custom (OpenAI-compatible)
     - Click `API connections` button
     - Select `Chat Conpletion Source` to `Custom (OpenAI-compatible)`
-    - Set `Custom Endpoint (Base URL)` to `http://clewd:8444/v1`
+    - Set `Custom Endpoint (Base URL)` to `http://clewd:8444/v1` for `clewd`
+    - Set `Custom Endpoint (Base URL)` to `http://youchat_proxy:8080/v1` for `YOUChat_proxy`
     - Scroll down and click `Connect`
     - Click `Available Models` and Click the Model you want to use
     - You're good to go
@@ -144,7 +153,7 @@ Create these subfolders inside your `{folder name}:`
 
 ##### Change Clewd cookie
 
-1. Open `{folder name}`/config.js
+1. Open `{folder name}`/config.clewd.js
 2. Update Cookie/CookieArray values
 3. Restart Clewd:
     - Using script: Run `2clewd_restart.sh`
@@ -153,6 +162,19 @@ Create these subfolders inside your `{folder name}:`
         docker-compose restart Clewd
         # or
         docker compose restart Clewd
+        ```
+
+##### Change You cookie
+
+1. Open `{folder name}`/config.youchat.mjs
+2. Update Cookie values
+3. Restart youchat_proxy:
+    - Using script: Run `2youchat_restart.sh`
+    - Manually:
+        ```bash
+        docker-compose restart youchat_proxy
+        # or
+        docker compose restart youchat_proxy
         ```
 
 #### Viewing Logs
@@ -183,6 +205,18 @@ docker-compose logs -f clewd
 docker compose logs -f clewd
 ```
 
+For YOUChat_proxy logs:
+
+```bash
+# Using script
+.\4youchat_logs.sh
+
+# Manually
+docker-compose logs -f youchat_proxy
+# or
+docker compose logs -f youchat_proxy
+```
+
 #### Stop services
 
 Using Shell script or manual to view logs
@@ -199,11 +233,27 @@ docker compose down
 
 ### Configuration
 
-#### config.js
+#### Clewd Settings
+
+##### 1. config.clewd.js
 
 1. Edit `Cookie` or `CookieArray`
 2. Change `IP` from `127.0.0.1` to `0.0.0.0`
-3. Edit other you want to change (You can refer to the following URL to modify the [teralomaniac_clewd](https://rentry.org/teralomaniac_clewd).)
+3. For detailed configuration options, please refer to [teralomaniac_clewd](https://rentry.org/teralomaniac_clewd)
+
+#### YOUChat_proxy Settings
+
+##### 1. config.youchat.mjs
+
+-   Edit `Cookie` value
+
+##### 2. Docker Compose Environment Variables
+
+> [!IMPORTANT]
+> USE_MANUAL_LOGIN Need to be set to false
+
+-   All settings except USE_MANUAL_LOGIN can be modified as needed
+-   For detailed configuration options, please refer to [YIWANG-sketch/YOUChat_Proxy](https://github.com/YIWANG-sketch/YOUChat_Proxy/blob/bypass-cf/usage.md#%E5%8F%AF%E9%80%89%E9%85%8D%E7%BD%AE--optional-configurations)
 
 #### config.yaml
 
@@ -274,3 +324,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ## 🌟 Acknowledgement
 
 -   teralomaniac: [clewd 修改版 by tera](https://github.com/teralomaniac/clewd)
+-   YIWANG-sketch: [YOUChat_Proxy](https://github.com/YIWANG-sketch/YOUChat_Proxy)
