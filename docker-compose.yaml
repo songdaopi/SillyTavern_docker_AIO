@@ -23,8 +23,8 @@ services:
   youchat_proxy:
     container_name: youchat_proxy
     image: ghcr.io/zhen-bo/youchat_proxy:latest
-    expose:
-      - 8080
+    ports:
+      - 8080:8080
     volumes:
       - ./config.youchat.mjs:/app/config.mjs
     environment:
