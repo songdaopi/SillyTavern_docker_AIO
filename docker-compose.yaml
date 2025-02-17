@@ -47,7 +47,7 @@ services:
       - PASSWORD=
       - PORT=8080
       - AI_MODEL=
-      - USE_CUSTOM_MODE=false
+      - USE_CUSTOM_MODE=true
       - ENABLE_MODE_ROTATION=false
       - INCOGNITO_MODE=false
       - UPLOAD_FILE_FORMAT=txt
